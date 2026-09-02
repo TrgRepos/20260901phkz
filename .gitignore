@@ -1,0 +1,9 @@
+.vscode/
+.idea/
+build/
+dist/
+coverage/
+.env
+.env.local
+.DS*
+._.*

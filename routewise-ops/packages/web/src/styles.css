@@ -1,0 +1,91 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f5f7fc;
+  color: #262626;
+  margin: 0;
+  padding: 2rem;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.route-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.route-card {
+  background: #fff;
+  border: 1px solid #e1e7f5;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.route-card h3 {
+  margin: 0 0 0.25rem;
+}
+
+.route-card button {
+  margin-top: 0.5rem;
+  border: 1px solid #cadcfc;
+  background: #eef2fb;
+  color: #1e2761;
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.route-list-item:has(.route-history) .route-card {
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+}
+
+.status {
+  font-weight: 600;
+}
+
+.route-history {
+  background: #fbfcff;
+  border: 1px solid #e1e7f5;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 0.75rem 1.25rem 1rem;
+}
+
+.route-history h3 {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.history-list li {
+  border-left: 3px solid #cadcfc;
+  padding-left: 0.6rem;
+}
+
+.history-date {
+  display: block;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.history-change {
+  display: block;
+  font-weight: 600;
+}
+
+.history-note {
+  margin: 0.2rem 0 0;
+  color: #262626;
+}

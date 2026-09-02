@@ -1,0 +1,16 @@
+{
+  "name": "routewise-ops",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Shared starter repo for Cursor AI-Powered Engineering Program - Level 2",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace=packages/api",
+    "dev:web": "npm run dev --workspace=packages/web",
+    "test:api": "npm test --workspace=packages/api",
+    "test:web": "npm test --workspace=packages/web",
+    "test": "npm run test:api && npm run test:web"
+  }
+}

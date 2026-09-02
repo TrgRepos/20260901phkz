@@ -1,0 +1,36 @@
+---
+description: Frontend conventions for the React web app
+globs: packages/web/**/*.tsx,packages/web/**/*.ts
+alwaysApply: false
+---
+
+# Frontend Conventions: packages/web
+
+## Component Structure
+- Function components only, no class components, per this project's
+  existing pattern.
+- One component per file, file name matches the component name
+  (`RouteCard.tsx` exports `RouteCard`).
+- Presentational components (e.g. `RouteCard`) receive data as props
+  and do not fetch data themselves. Only container/page-level components
+  (e.g. `RouteDashboard`) own data fetching.
+
+## Accessibility
+- Every interactive element (button, link, input) must have an
+  accessible name, either visible text or an `aria-label`.
+- Every image needs an `alt` attribute; decorative images use `alt=""`.
+- Loading and error states must be announced to assistive tech, e.g. a
+  `role="status"` on a loading indicator, not just a visual spinner.
+
+## API Usage
+- Components never call `fetch` directly. All backend calls go through
+  a typed function in `src/api/` (e.g. `routesApi.ts`), matching the
+  existing pattern.
+- The shape of any data returned from `src/api/` must match the backend
+  contract in `packages/api/src/types/route.types.ts` exactly. If a
+  field doesn't exist on the backend type, don't invent it on the
+  frontend.
+
+## State Management
+- Prefer a dedicated data-fetching hook (see `src/hooks/`) over ad-hoc
+  `useState` + `useEffect` fetch logic duplicated in a component.

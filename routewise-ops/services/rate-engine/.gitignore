@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+rates.db
+.pytest_cache/

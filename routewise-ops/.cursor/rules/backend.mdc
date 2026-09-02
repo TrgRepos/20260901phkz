@@ -1,0 +1,41 @@
+---
+description: Backend conventions for the Express + TypeScript API
+globs: packages/api/**/*.ts
+alwaysApply: false
+---
+
+# Backend Conventions: packages/api
+
+## Validation
+- Every route parameter and query parameter must be validated in a
+  dedicated validator middleware in `src/validators/`, not inline in
+  the controller.
+- On invalid input, respond with HTTP 400 and a body shaped exactly like
+  `{ error: string }`. The message must be specific enough to say what
+  was wrong (e.g. "id must be a positive integer"), not just "Bad Request".
+- Follow the existing validator style in `route.validator.ts`: a
+  named exported function, early return with `next()` on success.
+
+## Error Handling
+- A resource that isn't found returns HTTP 404 with
+  `{ error: string }`, never a 200 with an empty or null body.
+- Never swallow an error silently: every catch block either responds
+  with a clear error status/body or re-throws.
+
+## Logging
+- Do not add `console.log` to controllers or validators. This codebase
+  has no structured logger yet. If a change genuinely needs logging,
+  flag it in the response instead of inventing a logging call.
+
+## Testing
+- Every new or changed endpoint needs a corresponding test in
+  `tests/route.test.ts` (or a new file matching that naming pattern),
+  covering at minimum: the success case, and one failure case.
+- Never mark a task complete without running the relevant test file and
+  showing the result.
+
+## Data
+- Never introduce fake or sample production data. This repo's sample
+  data (`Route 12 – Riverside Loop`, `Route 4 – Harbor District`, etc.)
+  is the only synthetic data allowed, and only in `src/data/` and test
+  fixtures.
